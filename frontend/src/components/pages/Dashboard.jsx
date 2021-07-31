@@ -14,7 +14,7 @@ const Dashboard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    createProfile({ name, address, age })
+    createProfile({ name, address, age, image })
       .then((res) => {
         console.log("res", res);
         setName("");

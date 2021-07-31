@@ -7,8 +7,7 @@ function auth(req, res, next) {
         return res.status(401).send("Access denied. Not authorized...");
     }
     try {
-        const jwtSecretKey = process.env.TODO_APP_JWT_SECRET_KEY;
-        const decoded = jwt.verify(token, jwtSecretKey);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user = decoded;
         next();
     } catch (err) {
