@@ -18,6 +18,7 @@ const Header = () => {
   const state = useSelector((state) => state);
   console.log(state);
   const { user } = useSelector((state) => ({ ...state }));
+  console.log("header", user);
 
   const handleClick = (e) => {
     // console.log(e.key);
@@ -31,20 +32,38 @@ const Header = () => {
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      {user._id && (
-        <SubMenu
-          key="SubMenu"
-          icon={<SettingOutlined />}
-          title={user.username}
-          className="float-right"
-        >
-          <Menu.Item icon={<LogoutOutlined />} onClick={logout}>
-            Logout
+      {user.token && (
+        <>
+          <Menu.Item
+            key="dashboard"
+            icon={<UserAddOutlined />}
+            className="float-right"
+          >
+            <Link to="/dashboard">Dashboard</Link>
           </Menu.Item>
-        </SubMenu>
+
+          <Menu.Item
+            key="create"
+            icon={<UserAddOutlined />}
+            className="float-right"
+          >
+            <Link to="/create">Create</Link>
+          </Menu.Item>
+
+          <SubMenu
+            key="SubMenu"
+            icon={<SettingOutlined />}
+            title={user.username}
+            className="float-right"
+          >
+            <Menu.Item icon={<LogoutOutlined />} onClick={logout}>
+              Logout
+            </Menu.Item>
+          </SubMenu>
+        </>
       )}
 
-      {!user._id && (
+      {!user.token && (
         <>
           <Menu.Item
             key="register"

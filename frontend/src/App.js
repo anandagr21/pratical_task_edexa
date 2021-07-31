@@ -6,9 +6,9 @@ import SignUp from "./components/auth/SignUp";
 import SignIn from "./components/auth/SignIn";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/nav/Header";
-import Dashboard from "./components/pages/Dashboard";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
-import { useDispatch, useSelector } from "react-redux";
+import Create from "./components/pages/Create";
+import Dashboard from "./components/pages/Dashboard";
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/" component={SignIn} />
         <Route exact path="/register" component={SignUp} />
         <Route exact path="/login" component={SignIn} />
+        <ProtectedRoute exact path="/create" component={Create} />
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
     </>

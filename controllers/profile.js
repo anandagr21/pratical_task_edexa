@@ -21,6 +21,11 @@ exports.createProfile = async (req, res) => {
     }
 }
 
+exports.getProfile = async (req, res) => {
+    let profile = await Profile.find({});
+    res.json(profile)
+}
+
 const uploadToCloudnary = async (image) => {
     let result = await cloudinary.uploader.upload(image, {
         public_id: `${Date.now()}`,

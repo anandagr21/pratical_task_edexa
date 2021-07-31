@@ -12,7 +12,8 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // store
-const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+const middleware = [thunk];
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
 
 ReactDOM.render(
   <Provider store={store}>
